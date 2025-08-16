@@ -15,11 +15,14 @@ export default function DevanshChat() {
     setLoading(true);
 
     try {
-      const res = await fetch("http://localhost:5000/api/devansh", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ message: input }),
-      });
+      const res = await fetch(
+        "https://groupchatbot-b2v6.onrender.com/api/devansh",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ message: input }),
+        }
+      );
 
       const data = await res.json();
 
