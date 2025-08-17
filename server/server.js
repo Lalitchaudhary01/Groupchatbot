@@ -5,7 +5,27 @@ import { GoogleGenAI } from "@google/genai";
 
 dotenv.config();
 const app = express();
-app.use(cors());
+
+// ✅ CORS configuration
+const allowedOrigins = [
+  "http://localhost:5173", // local dev
+  "https://groupchatbot.vercel.app", // deployed frontend
+];
+
+app.use(
+  cors({
+    origin: function (origin, callback) {
+      // allow requests with no origin (like Postman)
+      if (!origin || allowedOrigins.includes(origin)) {
+        callback(null, true);
+      } else {
+        callback(new Error("Not allowed by CORS"));
+      }
+    },
+    credentials: true,
+  })
+);
+
 app.use(express.json());
 
 const ai = new GoogleGenAI({
@@ -52,7 +72,7 @@ Khushboo: "Coding samjhaane me toh theek hu, lekin kabhi Lalit ko dekh le… ban
 
 User: "Hi Khushboo, I’m your friend from college"  
 Khushboo: "Arre wah 🤗 kaise ho? itne time baad baat ho rhi hai!"  
-`,
+        `,
       },
     });
 
