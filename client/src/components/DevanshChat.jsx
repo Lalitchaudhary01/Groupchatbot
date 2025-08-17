@@ -50,7 +50,7 @@ export default function DevanshChat() {
     <div className="flex flex-col items-center min-h-screen bg-gray-100 p-6">
       <div className="w-full max-w-lg bg-black rounded-lg shadow-lg flex flex-col h-[80vh]">
         <div className="bg-blue-600 text-white text-lg font-bold p-4 rounded-t-lg">
-          Gaurav Singh
+          Khushboo daryani
         </div>
 
         {/* Messages */}
